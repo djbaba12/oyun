@@ -17,3 +17,5 @@ package.json
 *.log
 *.tmp
 /netlify
+# GitHub workflow yedegi (workflow scope'u olmadan push icin)
+_workflow_yedek/
