@@ -1,70 +1,96 @@
 @echo off
+setlocal EnableDelayedExpansion
 chcp 65001 >nul
-title Oyun Durağı Pro - GitHub'a Gönder
+title Oyun Duragi Pro - GitHub'a Gonder
 cd /d "%~dp0"
 
 echo.
-echo  ==========================================
-echo   OYUN DURAGI PRO ^| GitHub'a Gonderme
-echo  ==========================================
-echo   Depo: https://github.com/djbaba12/oyun
+echo  ==============================================
+echo    OYUN DURAGI PRO  -  GitHub'a GONDER
+echo  ==============================================
+echo    Depo : https://github.com/djbaba12/oyun
+echo    Adres: https://djbaba12.github.io/oyun/
+echo  ==============================================
 echo.
 
 where git >nul 2>nul
 if errorlevel 1 (
   echo  [HATA] Git kurulu degil.
   echo  Indir: https://git-scm.com/download/win
+  echo.
   pause
   exit /b 1
 )
 
-REM uzak depo ayarli mi?
-git remote get-url origin >nul 2>nul
-if errorlevel 1 (
-  echo  [1/3] Uzak depo ekleniyor...
-  git remote add origin https://github.com/djbaba12/oyun.git
-) else (
-  echo  [1/3] Uzak depo zaten ayarli: 
-  git remote get-url origin
+echo  Kullanici adi: djbaba12
+echo.
+
+set /p TOKEN=  Personal Access Token (ghp_... yapistir, ekranda gorunmez):
+echo.
+
+if "!TOKEN!"=="" (
+  echo  [HATA] Token bos. Iptal edildi.
+  echo  Token al: https://github.com/settings/tokens
+  echo.
+  pause
+  exit /b 1
 )
 
-echo.
-echo  [2/3] Dosyalar kontrol ediliyor...
+REM Token'i URL'ye gom (kalici olarak diske yazilmaz, sadece bu komut icin)
+set "REMOTE=https://djbaba12:!TOKEN!@github.com/djbaba12/oyun.git"
+
+echo  [1/4] Uzak depo ayarlaniyor...
+git remote remove origin >nul 2>nul
+git remote add origin "!REMOTE!"
+
+echo  [2/4] Degisiklikler hazirlaniyor...
 git add -A
 git diff --cached --quiet
 if errorlevel 1 (
   git commit -m "Oyun Duragi Pro guncelleme" >nul
   echo        Yeni degisiklikler commit'lendi.
 ) else (
-  echo        Degisiklik yok, mevcut commit gonderiliyor.
+  echo        Degisiklik yok.
 )
 
+echo  [3/4] GitHub'a gonderiliyor...
 echo.
-echo  [3/3] GitHub'a gonderiliyor...
-echo        Sifre sorulursa: Personal Access Token yapistir
-echo        ^(https://github.com/settings/tokens^)
-echo.
-git push -u origin main
+git -c credential.helper= push -u origin main --force
 
 if errorlevel 1 (
   echo.
-  echo  [HATA] Gonderilemedi.
-  echo  - Token'inda "repo" izni var mi?
-  echo  - Eski kimlik bilgisi kayitli ise: Denetim Masasi - Kimlik Bilgisi Yoneticisi
+  echo  ==============================================
+  echo    [HATA] Gonderilemedi!
+  echo  ==============================================
+  echo  Olasi sebepler:
+  echo   1. Token yanlis veya suresi gecmis
+  echo   2. Token'da "repo" izni yok
+  echo   3. Internet baglantisi yok
+  echo.
+  echo  Yeni token: https://github.com/settings/tokens
   echo.
   pause
   exit /b 1
 )
 
 echo.
-echo  ==========================================
-echo   BASARILI! GitHub'a gonderildi.
-echo  ==========================================
+echo  [4/4] Token temizleniyor (guvenlik)...
+git remote set-url origin https://github.com/djbaba12/oyun.git
+
 echo.
-echo   Son adim: GitHub'da su ayari yap
+echo  ==============================================
+echo    BASARILI!  Dosyalar GitHub'a yuklendi.
+echo  ==============================================
+echo.
+echo   SON ADIM: GitHub'da Pages'i ac
 echo   Depo - Settings - Pages - Source: GitHub Actions
 echo.
-echo   Yayin adresi: https://djbaba12.github.io/oyun/
+echo   Yayin adresi (1-2 dk sonra):
+echo   https://djbaba12.github.io/oyun/
 echo.
+
+timeout /t 3 >nul
 start "" "https://github.com/djbaba12/oyun/settings/pages"
+echo  Pages ayar sayfasi acildi. Source: GitHub Actions sec ve Save'e bas.
+echo.
 pause
