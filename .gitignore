@@ -1,0 +1,19 @@
+# Sistem
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editör
+.vscode/
+.idea/
+*.swp
+
+# Node (test için)
+node_modules/
+package-lock.json
+package.json
+
+# Geçici
+*.log
+*.tmp
+/netlify

@@ -1,0 +1,394 @@
+/* ==========================================================================
+   LAYOUT — uygulama kabuğu, üst bar, alt sekme çubuğu, sayfa yerleşimi
+   Mobilden masaüstüne kadar duyarlı
+   ========================================================================== */
+
+/* ---------------- Uygulama kabuğu ---------------- */
+body {
+  padding-top: calc(var(--appbar-h) + var(--safe-top));
+  padding-bottom: calc(var(--tabbar-h) + var(--safe-bottom) + 8px);
+}
+
+.view {
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+  padding: 0 var(--pad);
+  animation: view-in .28s var(--ease);
+}
+
+@keyframes view-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ---------------- Üst bar ---------------- */
+.appbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  padding-top: var(--safe-top);
+  background: rgba(8, 9, 15, .82);
+  backdrop-filter: saturate(180%) blur(18px);
+  -webkit-backdrop-filter: saturate(180%) blur(18px);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.appbar-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: var(--appbar-h);
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-inline: 10px;
+}
+
+.appbar-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: -.01em;
+  margin-right: auto;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.appbar-title b {
+  background: var(--brand-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.logo-dot {
+  width: 26px;
+  height: 26px;
+  border-radius: 9px;
+  flex: none;
+  background: var(--brand-grad);
+  box-shadow: 0 4px 14px rgba(124, 92, 255, .45);
+  position: relative;
+}
+
+.logo-dot::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, .85);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.icon-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: var(--text-dim);
+  transition: background .18s, color .18s, transform .12s;
+  flex: none;
+}
+
+.icon-btn:hover { background: rgba(255, 255, 255, .06); color: var(--text); }
+.icon-btn:active { transform: scale(.92); }
+
+#back-btn {
+  background: rgba(255, 255, 255, .05);
+  color: var(--text);
+}
+
+.search-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  max-width: 1180px;
+  margin-inline: auto;
+  padding: 0 12px 10px;
+}
+
+.search-row input {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+  padding: 0 14px;
+  color: var(--text);
+  font-size: 16px; /* iOS zoom engeli */
+}
+
+.search-row input::placeholder { color: var(--text-mute); }
+.search-row input:focus { border-color: var(--brand); outline: none; }
+
+.text-btn {
+  color: var(--brand-2);
+  font-weight: 600;
+  padding: 8px 4px;
+  flex: none;
+}
+
+/* ---------------- Alt sekme çubuğu ---------------- */
+.tabbar {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 60;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  height: calc(var(--tabbar-h) + var(--safe-bottom));
+  padding-bottom: var(--safe-bottom);
+  background: rgba(11, 13, 22, .92);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-top: 1px solid var(--line-soft);
+}
+
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: var(--text-mute);
+  font-size: .66rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+  transition: color .18s;
+  position: relative;
+  padding: 0 2px;
+}
+
+.tab svg { width: 22px; height: 22px; transition: transform .2s var(--ease); }
+
+.tab.active { color: var(--text); }
+.tab.active svg { transform: translateY(-1px) scale(1.06); color: var(--brand-2); }
+
+.tab.active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 28px;
+  height: 3px;
+  border-radius: 0 0 4px 4px;
+  background: var(--brand-grad);
+}
+
+.tab:active svg { transform: scale(.9); }
+
+/* ---------------- Hero ---------------- */
+.hero {
+  padding: 22px 0 14px;
+}
+
+.hero h1 {
+  font-size: clamp(1.45rem, 5vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+
+.hero h1 span {
+  background: var(--brand-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  color: var(--text-dim);
+  font-size: .9rem;
+  margin-top: 4px;
+}
+
+.quick-stats {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin-top: 14px;
+  padding-bottom: 2px;
+}
+
+.quick-stats::-webkit-scrollbar { display: none; }
+
+.stat {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(23, 27, 43, .8);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 9px 14px;
+  font-size: .78rem;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+.stat b { color: var(--text); font-size: .92rem; font-variant-numeric: tabular-nums; }
+.stat .ic { font-size: 1rem; }
+
+/* ---------------- Kategori çipleri ---------------- */
+.chips-wrap {
+  position: sticky;
+  top: calc(var(--appbar-h) + var(--safe-top));
+  z-index: 40;
+  margin: 0 calc(var(--pad) * -1);
+  padding: 10px var(--pad);
+  background: linear-gradient(180deg, rgba(8, 9, 15, .96) 60%, rgba(8, 9, 15, 0));
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.chips::-webkit-scrollbar { display: none; }
+
+/* ---------------- Bölüm ---------------- */
+.section { padding-bottom: 40px; }
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 6px 0 12px;
+}
+
+.section-head h2 { font-size: 1.05rem; font-weight: 700; }
+.muted { color: var(--text-mute); font-size: .78rem; font-weight: 500; }
+
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-mute);
+}
+
+.empty span { font-size: 2.4rem; display: block; margin-bottom: 10px; }
+
+/* ---------------- Oyun grid ---------------- */
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (min-width: 560px) {
+  .game-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+}
+
+@media (min-width: 860px) {
+  .game-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+}
+
+@media (min-width: 1100px) {
+  .game-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+
+/* ---------------- Oyun ekranı ---------------- */
+#play { padding-top: 14px; }
+
+.play-head { margin-bottom: 14px; }
+
+.play-head h2 {
+  font-size: clamp(1.25rem, 4.5vw, 1.6rem);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.play-head p {
+  color: var(--text-dim);
+  font-size: .86rem;
+  margin-top: 3px;
+}
+
+.stage { display: flex; justify-content: center; padding-bottom: 28px; }
+
+/* Masaüstünde oyun alanı ortalanır ve genişler */
+@media (min-width: 720px) {
+  .stage { padding-bottom: 48px; }
+}
+
+/* ---------------- Rekorlar sayfası ---------------- */
+.records-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 40px;
+}
+
+/* ---------------- Toast ---------------- */
+.toast-wrap {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--tabbar-h) + var(--safe-bottom) + 16px);
+  transform: translateX(-50%);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  width: min(420px, calc(100% - 32px));
+  pointer-events: none;
+}
+
+/* ---------------- Yatay mod (telefon) ---------------- */
+@media (orientation: landscape) and (max-height: 480px) {
+  :root { --appbar-h: 48px; --tabbar-h: 0px; }
+  .tabbar { display: none; }
+  body { padding-bottom: 8px; }
+  .hero { padding: 8px 0; }
+  .hero h1 { font-size: 1.2rem; }
+}
+
+/* ---------- Yatay taşma güvenlik ağı ---------- */
+html, body { max-width: 100%; overflow-x: clip; }
+
+.view { min-width: 0; }
+
+.hero h1, .hero p, .play-head h2, .play-head p { overflow-wrap: anywhere; }
+
+.game-grid, .section, .graph, .hud, .hud-actions, .row-wrap, .chips { min-width: 0; }
+
+/* Stat pilleri dar ekranda daralt */
+@media (max-width: 480px) {
+  .stat { padding: 8px 12px; font-size: .74rem; }
+  .stat b { font-size: .86rem; }
+}
+
+/* Tahta sarmalayıcıları asla viewport'u aşmasın */
+.board-wrap, .game-shell, .stage, .grid-wrap, .tubes-wrap, .sol-tableau, .sol-top {
+  max-width: 100%;
+  min-width: 0;
+}
+
+canvas.game-canvas { max-width: 100%; }
+
+/* Tabbar her zaman 5 eşit sütun */
+.tabbar { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+.tab { min-width: 0; }
+.tab span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
+
+/* ---------- Kesin yatay taşma çözümü ---------- */
+.quick-stats {
+  margin-inline: calc(var(--pad) * -1);
+  padding-inline: var(--pad);
+  width: auto;
+}
+
+.chips-wrap {
+  margin: 0 calc(var(--pad) * -1) !important;
+  padding: 10px var(--pad) !important;
+  width: auto;
+}
+
+.hero, .hero p, .hero h1 { max-width: 100%; }

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="tr" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0b0d17">
+<meta name="color-scheme" content="dark">
+<meta name="format-detection" content="telephone=no">
+
+<title>Oyun Durağı Pro — 40+ Ücretsiz Oyun, İnternetsiz ve Mobil Uyumlu</title>
+<meta name="description" content="40'dan fazla ücretsiz mini oyun: Yılan, Tetris, 2048, Mayın Tarlası, XOX, Sudoku ve daha fazlası. İnternet gerekmez, kayıt yok, reklamsız. Telefon, tablet ve bilgisayarda oyna.">
+<meta name="keywords" content="oyun, ücretsiz oyun, online oyun, yılan oyunu, tetris, 2048, mayın tarlası, xox, sudoku, mobil oyun, tarayıcı oyunları, internetsiz oyun">
+<meta name="author" content="Oyun Durağı Pro">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="googlebot" content="index, follow">
+<link rel="canonical" href="https://oyun-duragi.netlify.app/">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="application-name" content="Oyun Durağı Pro">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Oyun Durağı">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+
+<!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Oyun Durağı Pro">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Oyun Durağı Pro — 40+ Ücretsiz Oyun">
+<meta property="og:description" content="Yılan, Tetris, 2048, Mayın Tarlası, XOX ve daha fazlası. İnternet gerekmez, kayıt yok, reklamsız. Hemen oyna!">
+<meta property="og:url" content="https://oyun-duragi.netlify.app/">
+<meta property="og:image" content="https://oyun-duragi.netlify.app/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Oyun Durağı Pro — 40+ ücretsiz oyun">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Oyun Durağı Pro — 40+ Ücretsiz Oyun">
+<meta name="twitter:description" content="Yılan, Tetris, 2048, Mayın Tarlası, XOX ve daha fazlası. İnternet gerekmez, reklamsız.">
+<meta name="twitter:image" content="https://oyun-duragi.netlify.app/assets/og-image.png">
+
+<!-- Güvenlik -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/play.css">
+<link rel="stylesheet" href="css/features.css">
+
+<!-- Yapılandırılmış veri (SEO) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Oyun Durağı Pro",
+  "alternateName": "Oyun Durağı",
+  "url": "https://oyun-duragi.netlify.app/",
+  "description": "40+ ücretsiz mini oyun: arcade, zeka ve klasik. İnternet gerekmez, reklamsız, mobil uyumlu.",
+  "inLanguage": "tr-TR",
+  "isFamilyFriendly": true
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Ücretsiz Oyunlar",
+  "itemListElement": [
+    { "@type": "VideoGame", "name": "Yılan", "genre": "Arcade", "applicationCategory": "Game", "operatingSystem": "Web" },
+    { "@type": "VideoGame", "name": "Tetris", "genre": "Klasik", "applicationCategory": "Game", "operatingSystem": "Web" },
+    { "@type": "VideoGame", "name": "2048", "genre": "Zeka", "applicationCategory": "Game", "operatingSystem": "Web" },
+    { "@type": "VideoGame", "name": "Mayın Tarlası", "genre": "Zeka", "applicationCategory": "Game", "operatingSystem": "Web" },
+    { "@type": "VideoGame", "name": "XOX", "genre": "Klasik", "applicationCategory": "Game", "operatingSystem": "Web" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">İçeriğe geç</a>
+
+<!-- ========== ÜST BAR ========== -->
+<header class="appbar" role="banner">
+  <div class="appbar-row">
+    <button class="icon-btn" id="back-btn" aria-label="Geri" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="appbar-title">
+      <span class="logo-dot" aria-hidden="true"></span>
+      <span id="appbar-title">Oyun Durağı <b>Pro</b></span>
+    </div>
+    <button class="icon-btn" id="install-btn" aria-label="Uygulamayı yükle" title="Ana ekrana ekle" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M8 11l4 4 4-4"/><path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+    </button>
+    <button class="icon-btn" id="search-btn" aria-label="Oyun ara">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    </button>
+    <button class="icon-btn" id="sound-btn" aria-label="Sesi aç/kapat">
+      <svg id="sound-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 010 7"/></svg>
+      <svg id="sound-off" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg>
+    </button>
+  </div>
+  <div class="search-row" id="search-row" hidden>
+    <input type="search" id="search-input" placeholder="Oyun ara… (ör. tetris, mayın, sudoku)" autocomplete="off" aria-label="Oyun ara">
+    <button class="text-btn" id="search-close" type="button">Kapat</button>
+  </div>
+  <div class="net-bar" id="net-bar" hidden>📡 Çevrimdışısın — oyunlar yine çalışır</div>
+</header>
+
+<!-- ========== ANA SAYFA ========== -->
+<main id="home" class="view" role="main"></main>
+
+<!-- ========== OYUN EKRANI ========== -->
+<main id="play" class="view" hidden>
+  <div class="play-head">
+    <h2 id="play-title"></h2>
+    <p id="play-desc"></p>
+  </div>
+  <div class="stage" id="stage"></div>
+</main>
+
+<!-- ========== ALT GEZİNME (MOBİL) ========== -->
+<nav class="tabbar" id="tabbar" role="tablist" aria-label="Ana gezinme">
+  <button class="tab active" data-tab="home" role="tab" aria-selected="true">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+    <span>Ana Sayfa</span>
+  </button>
+  <button class="tab" data-tab="arcade" role="tab" aria-selected="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="4"/><path d="M6 12h4M8 10v4"/><circle cx="16" cy="11" r="1"/><circle cx="18.5" cy="14" r="1"/></svg>
+    <span>Arcade</span>
+  </button>
+  <button class="tab" data-tab="puzzle" role="tab" aria-selected="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3a3 3 0 013 3v1h3a2 2 0 012 2v3h-1a3 3 0 000 6h1v3a2 2 0 01-2 2h-3v-1a3 3 0 00-6 0v1H5a2 2 0 01-2-2v-3h1a3 3 0 000-6H3V9a2 2 0 012-2h3V6a3 3 0 013-3z"/></svg>
+    <span>Zeka</span>
+  </button>
+  <button class="tab" data-tab="classic" role="tab" aria-selected="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg>
+    <span>Klasik</span>
+  </button>
+  <button class="tab" data-tab="football" role="tab" aria-selected="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7l4 3-1.5 4.5h-5L8 10l4-3z"/><path d="M12 7V3M16 10l4-1M14.5 14.5l2 4M9.5 14.5l-2 4M8 10L4 9"/></svg>
+    <span>Süper Lig</span>
+  </button>
+  <button class="tab" data-tab="chat" role="tab" aria-selected="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 01-8 8H7l-4 3V12a8 8 0 018-8h2a8 8 0 018 8z"/><path d="M8 11h8M8 15h5"/></svg>
+    <span>Sohbet</span>
+  </button>
+  <button class="tab" data-tab="records" role="tab" aria-selected="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8M12 17v4"/><path d="M7 4h10v5a5 5 0 01-10 0V4z"/><path d="M7 6H4v2a3 3 0 003 3M17 6h3v2a3 3 0 01-3 3"/></svg>
+    <span>Rekorlar</span>
+  </button>
+</nav>
+
+<div class="toast-wrap" id="toast-wrap" role="status" aria-live="polite"></div>
+
+<noscript>
+  <div class="net-bar" style="display:block">Oyun Durağı Pro'yu oynamak için tarayıcında JavaScript'i etkinleştirmen gerekiyor.</div>
+</noscript>
+
+<script src="js/core.js"></script>
+<script src="js/arcade-a.js"></script>
+<script src="js/arcade-b.js"></script>
+<script src="js/puzzle-a.js"></script>
+<script src="js/puzzle-b.js"></script>
+<script src="js/classic-a.js"></script>
+<script src="js/classic-b.js"></script>
+<script src="js/extra.js"></script>
+<script src="js/football.js"></script>
+<script src="js/chat.js"></script>
+<script src="js/voice.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
