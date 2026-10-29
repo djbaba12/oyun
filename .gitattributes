@@ -1,0 +1,6 @@
+# Satır sonlarını normalize et (Windows/Linux karışıklığını önler)
+* text=auto eol=lf
+
+# İkili dosyalar
+*.png binary
+*.jpg binary
