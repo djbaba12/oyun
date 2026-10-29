@@ -40,7 +40,7 @@ Bu yol zip sorunlarını tamamen atlar.
 ## 🌐 Adresi güzelleştir
 
 **Site configuration → Change site name** → `oyun-duragi`
-Adresin: `https://oyun-duragi.netlify.app`
+Adresin: `https://djbaba12.github.io/oyun`
 
 ## 📱 Telefona uygulama olarak kur
 

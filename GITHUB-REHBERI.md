@@ -1,85 +1,55 @@
 # 🐙 GitHub'a Yayınlama Rehberi
 
-Bu klasör zaten bir **git deposu** olarak hazırlanmış durumda.
-Yapman gereken tek şey: kendi GitHub hesabına göndermek.
-
-> ⚠️ **Neden push'u ben yapamıyorum?**
-> GitHub'a yazmak için **senin hesabın** gerekir (giriş veya erişim anahtarı).
-> Bu bilgiler sende kalmalı — bu yüzden son adımı sen yapıyorsun.
-> Aşağıdaki adımlar 3 dakikada biter.
+> ## 🎯 Senin depona hazır!
+> **Depo:** https://github.com/djbaba12/oyun — public ve şu an boş ✓
+> **Yayın adresi olacak:** https://djbaba12.github.io/oyun/
+>
+> Site dosyaları ve git deposu bu klasörde **hazır**. Aşağıdaki 2 adımı yapman yeterli.
 
 ---
 
-## ✅ Yöntem 1: GitHub Desktop (en kolay, komut yok)
+## ⚡ En hızlı yol (2 komut)
 
-1. **GitHub Desktop** indir: https://desktop.github.com
-2. GitHub hesabınla giriş yap
-3. Menü: **File → Add local repository**
-4. Bu klasörü seç: `OyunDurağı Pro`
-5. Sağ üstte **Publish repository** → isim: `oyun-duragi`
-   - ✅ "Keep this code private" işaretini **kaldır** (Pages için gerekli)
-6. **Publish repository**'ye bas
-
-Sonra Pages'i aç:
-7. GitHub'da depona gir → **Settings → Pages**
-8. **Source: GitHub Actions** seç
-
-Site 1-2 dakika içinde hazır:
-```
-https://KULLANICIADI.github.io/oyun-duragi/
-```
-
----
-
-## ✅ Yöntem 2: Komut satırı
-
-### 1. GitHub'da boş depo aç
-https://github.com/new
-- Repository name: `oyun-duragi`
-- **Public** seç
-- README/`.gitignore` ekleme (zaten var)
-- **Create repository**
-
-### 2. Bu klasörde terminal aç
-
-Windows'ta klasörde `Shift + Sağ tık` → **"Terminalde aç"** veya **"PowerShell penceresi burada"**
-
-### 3. Gönder
+Bu klasörde terminal aç (`Shift + Sağ tık` → **"Terminalde aç"**) ve sırayla çalıştır:
 
 ```bash
-git remote add origin https://github.com/KULLANICIADI/oyun-duragi.git
-git branch -M main
+git remote add origin https://github.com/djbaba12/oyun.git
 git push -u origin main
 ```
 
-Git kullanıcı adı + **Personal Access Token** ister:
-- https://github.com/settings/tokens → **Generate new token (classic)**
-- Scope: ✅ **repo**
-- Token'ı şifre olarak yapıştır (şifre değil!)
+İlk seferde GitHub **kullanıcı adı + Personal Access Token** ister:
 
-### 4. Pages'i aç
-GitHub → depo → **Settings → Pages → Source: GitHub Actions**
+1. https://github.com/settings/tokens → **Generate new token (classic)**
+2. Scope: ✅ **repo**
+3. Oluşan token'ı **şifre olarak** yapıştır (GitHub şifresi çalışmaz)
 
-`.github/workflows/pages.yml` dosyası otomatik yayınlar.
-**Actions** sekmesinden ilerlemeyi izleyebilirsin.
+Sonra GitHub'da: depo → **Settings** → **Pages** → **Source: GitHub Actions**
+
+✅ 1–2 dakika içinde siten yayında: **https://djbaba12.github.io/oyun/**
 
 ---
 
-## 🌐 Adresini özelleştir
+## ✅ Alternatif: GitHub Desktop (komut yok)
 
-Site adresi: `https://KULLANICIADI.github.io/oyun-duragi/`
+1. https://desktop.github.com indir, GitHub hesabınla giriş yap
+2. **File → Add local repository** → bu klasörü seç
+3. **Repository → Repository settings → Remote** alanına `djbaba12/oyun` yaz
+   (veya **Publish repository** → isim `oyun`, "private" işaretini kaldır)
+4. **Push origin** → **Settings → Pages → Source: GitHub Actions**
 
-Gerçek adresini `index.html` içine yaz (sosyal önizleme için):
+---
+
+## 🌐 Adresini doğrula
+
+`index.html` içindeki adresler **zaten senin adresine ayarlandı**:
 
 ```html
-<link rel="canonical" href="https://KULLANICIADI.github.io/oyun-duragi/">
-<meta property="og:url" content="https://KULLANICIADI.github.io/oyun-duragi/">
-<meta property="og:image" content="https://KULLANICIADI.github.io/oyun-duragi/assets/og-image.png">
-<meta name="twitter:image" content="https://KULLANICIADI.github.io/oyun-duragi/assets/og-image.png">
+<link rel="canonical" href="https://djbaba12.github.io/oyun/">
+<meta property="og:url" content="https://djbaba12.github.io/oyun/">
+<meta property="og:image" content="https://djbaba12.github.io/oyun/assets/og-image.png">
 ```
 
-Ayrıca `robots.txt` ve `sitemap.xml` içindeki `https://oyun-duragi.netlify.app` adreslerini
-kendi adresinle değiştir.
+`robots.txt` ve `sitemap.xml` da güncel. Başka bir şey değiştirmen gerekmiyor.
 
 ---
 
@@ -91,26 +61,36 @@ git commit -m "Yeni oyun eklendi"
 git push
 ```
 
-GitHub Actions otomatik olarak yeniden yayınlar (yaklaşık 1 dk).
+GitHub Actions otomatik yeniden yayınlar (~1 dk).
 
-> JS/CSS değiştirdiysen `sw.js` içindeki `VERSION` değerini artır ki kullanıcılar yeni sürümü alsın:
+> JS/CSS değiştirdiysen `sw.js` içindeki sürümü artır:
 > ```js
 > const VERSION = "v4.0.1";
 > ```
+> Böylece tarayıcılar yeni sürümü alır.
 
 ---
 
 ## 🗂️ Depoda neler var?
 
 ```
-.gitignore               node_modules, .DS_Store vs. hariç
-.github/workflows/pages.yml   otomatik yayın
-README.md                proje tanıtımı
-GITHUB-REHBERI.md        bu dosya
-index.html + css/ + js/ + assets/   site
+.gitattributes              satır sonu normalizasyonu
+.gitignore                  node_modules, .DS_Store vs. hariç
+.github/workflows/pages.yml otomatik yayın (GitHub Actions)
+README.md                   proje tanıtımı
+GITHUB-REHBERI.md           bu dosya
+YAYIN-REHBERI.md            Netlify alternatifi
+index.html
+css/  js/  assets/          site
+tools/                      ikon üreticisi (siteye dahil değil)
 ```
 
-`tools/` klasörü ve test dosyaları depoya girmez.
+---
+
+## 🧪 Yayın öncesi son kontrol
+
+Bu klasördeki site yerelde çalışıyor mu? `index.html`'e çift tıkla.
+Animasyonlar, ses, PWA hepsi `file://` altında da test edildi.
 
 ---
 
@@ -118,13 +98,22 @@ index.html + css/ + js/ + assets/   site
 
 | Sorun | Çözüm |
 |---|---|
-| `remote: Permission denied` | Token'ında `repo` scope'u var mı? GitHub giriş bilgilerini Windows Kimlik Yöneticisi'nden sil |
-| Pages boş görünüyor | Settings → Pages → Source'un **GitHub Actions** olduğundan emin ol |
-| Site 404 veriyor | Actions sekmesinde workflow başarılı mı? Birkaç dakika bekle |
-| Stil bozuk | Dosyalar `css/` klasöründe mi? Depoda klasör yapısı korunmalı |
-| PWA kurulmuyor | HTTPS gerekli — `github.io` HTTPS sağlar ✓ |
+| `remote: Permission denied` | Token'ında `repo` scope var mı? Windows Kimlik Yöneticisi'nden eski GitHub bilgisini sil |
+| `error: remote origin already exists` | `git remote set-url origin https://github.com/djbaba12/oyun.git` |
+| Pages boş görünüyor | Settings → Pages → Source **GitHub Actions** mı? |
+| Site 404 veriyor | Actions sekmesinde workflow yeşil mi? 1-2 dk bekle, sonra `Ctrl+Shift+R` |
+| Stil bozuk / oyun yok | Klasör yapısı (`css/`, `js/`) korunmalı — tek tek dosya yükleme |
+| PWA kurulmuyor | HTTPS gerekli — `github.io` bunu sağlar ✓ |
+| Eski sürüm görünüyor | `sw.js` içindeki `VERSION` değerini artırıp tekrar push et |
 
 ---
 
-Yayınladıktan sonra adresi bana söyle, `index.html` içindeki adres satırlarını
-senin domainine göre güncelleyip yeni zip hazırlayayım. 🎉
+## 🎉 Yayınladıktan sonra
+
+Adresin: **https://djbaba12.github.io/oyun/**
+
+- Telefonda aç → üstteki ⬇ ile **ana ekrana ekle**
+- WhatsApp'ta paylaş → önizleme kartı otomatik gelecek
+- Belirli oyunu paylaş: `https://djbaba12.github.io/oyun/#tetris`
+
+İyi eğlenceler! 🎮
